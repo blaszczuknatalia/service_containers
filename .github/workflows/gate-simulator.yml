@@ -1,0 +1,38 @@
+name: Gate Simulator — Approve/Reject deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Workflow run ID to approve/reject'
+        required: true
+      state:
+        description: 'Approval state'
+        required: true
+        type: choice
+        options:
+          - approved
+          - rejected
+      comment:
+        description: 'Comment for the decision'
+        required: false
+        default: 'Approved via gate simulator'
+
+jobs:
+  gate-decision:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get pending deployments
+        run: |
+          gh api repos/${{ github.repository }}/actions/runs/${{ inputs.run_id }}/pending_deployments
+
+      - name: Send decision
+        run: |
+          gh api repos/${{ github.repository }}/actions/runs/${{ inputs.run_id }}/deployment_protection_rule \
+            -X POST \
+            -f environment_name="production" \
+            -f state="${{ inputs.state }}" \
+            -f comment="${{ inputs.comment }}"
+
+      - name: Placeholder
+        run: echo "TODO - implement gate decision"
