@@ -29,7 +29,7 @@ jobs:
 
       - name: Deploy
         run: |
-          az group show --name AZ-RG-TestNB --output table
+          az group show --name AZ-RG-NBTest --output table
 
       - name: Placeholder
         run: echo "TODO - implement OIDC login and deployment"
