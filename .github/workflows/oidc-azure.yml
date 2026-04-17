@@ -5,10 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# TODO: Add the permissions required for OIDC
-# permissions:
-#   id-token: ???
-#   contents: ???
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   deploy:
