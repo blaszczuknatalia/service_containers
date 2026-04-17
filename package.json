@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Integration test exercise with PostgreSQL and Redis service containers",
   "scripts": {
+    "build": "rm -rf dist && mkdir -p dist && cp -r src/* dist/",
     "test": "jest --forceExit --detectOpenHandles",
     "test:integration": "jest --forceExit --detectOpenHandles --testPathPattern=app.test"
   },
