@@ -36,8 +36,8 @@ jobs:
     needs: test-staging
     runs-on: ubuntu-latest
     environment:
-      - name: production-approval
-      - url: https://example.com/approval
+      name: production-approval
+      url: https://example.com/approval
     steps:
       - name: Awaiting approval for production deployment
         run: echo "Waiting for approval to deploy to production..."
@@ -46,8 +46,8 @@ jobs:
     needs: approve-production
     runs-on: ubuntu-latest
     environment: 
-      - name: production
-      - url: https://example.com
+      name: production
+      url: https://example.com
     steps:
       - name: Deploy to production
         run: echo "Deployed to production"
