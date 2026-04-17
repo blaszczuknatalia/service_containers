@@ -4,15 +4,15 @@ on:
   push:
     branches: [main]
 
-# TODO: Set permissions to default deny ({})
+permissions: {}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      - id-token: write
-      - contents: read
-      - attestations: write
+      id-token: write
+      contents: read
+      attestations: write
     steps:
       - uses: actions/checkout@v4
 
